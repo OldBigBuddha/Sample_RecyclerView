@@ -3,13 +3,12 @@ package net.oldbigbuddha.sample.sample_recyclerview
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.text.format.DateFormat
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
-import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.item.view.*
 
 class ItemAdapter(
@@ -28,8 +27,9 @@ class ItemAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item, parent, false))
 
     private fun removeItem(position: Int) {
-        mItems.removeAt(position - 1)
-        notifyItemRemoved(position - 1)
+        mItems.removeAt(position)
+        notifyItemRemoved(position)
+        notifyDataSetChanged()
     }
 
 
